@@ -6,6 +6,26 @@
 	<version>2.7.0</version>
 	<packaging>jar</packaging>
 
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License</name>
+			<url>http://www.gnu.org/licenses/lgpl.txt</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Olaf Willuhn</name>
+		<url>https://willuhn.de</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>willuhn</id>
+			<name>Olaf Willuhn</name>
+			<url>https://willuhn.de</url>
+		</developer>
+	</developers>
+
 	<properties>
 		<url.jameica>https://willuhn.de/products/jameica/releases/2.6/jameica/jameica.zip</url.jameica>
 	</properties>
