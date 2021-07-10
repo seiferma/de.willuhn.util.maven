@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.willuhn</groupId>
+	<artifactId>util</artifactId>
+	<version>2.8.0.219</version>
+	<packaging>jar</packaging>
+
+	<licenses>
+		<license>
+			<name>GNU Lesser General Public License</name>
+			<url>http://www.gnu.org/licenses/lgpl.txt</url>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Olaf Willuhn</name>
+		<url>https://willuhn.de</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>willuhn</id>
+			<name>Olaf Willuhn</name>
+			<url>https://willuhn.de</url>
+		</developer>
+	</developers>
+
+	<properties>
+		<url.jameica>https://www.willuhn.de/products/jameica/releases/2.8/jameica/jameica-2.8.4.zip</url.jameica>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>local-tmp</id>
+			<url>file://${project.build.directory}/local-repo</url>
+		</repository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+					<execution>
+						<id>download-jameica-binary</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>${url.jameica}</url>
+							<unpack>true</unpack>
+							<outputDirectory>${project.build.directory}/jameica</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<configuration>
+							<target>
+								<unzip src="${project.build.directory}/jameica/jameica/lib/de_willuhn_util/de_willuhn_util.jar" dest="${project.build.outputDirectory}" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
